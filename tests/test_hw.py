@@ -6,7 +6,7 @@ def test_dark_theme_by_time():
     night_hours = list(range(22, 24)) + list(range(0, 7))
     random_time = random.choice(night_hours)
     current_time = time(hour=random_time)
-    if time(hour=6) < current_time < time(hour=22):
+    if time(hour=6) <= current_time <= time(hour=21):
         is_dark_theme = False
     else:
         is_dark_theme = True
@@ -34,12 +34,12 @@ def test_dark_theme_by_time_and_user_choice():
     assert is_dark(6, True) is True
     assert is_dark(6, False) is False
     assert is_dark(6, None) is False
+    assert is_dark(21, True) is True
+    assert is_dark(21, False) is False
+    assert is_dark(21, None) is False
     assert is_dark(22, True) is True
     assert is_dark(22, False) is False
-    assert is_dark(22, None) is False
-    assert is_dark(23, True) is True
-    assert is_dark(23, False) is False
-    assert is_dark(23, None) is True
+    assert is_dark(22, None) is True
 
 
 def test_find_suitable_user():
