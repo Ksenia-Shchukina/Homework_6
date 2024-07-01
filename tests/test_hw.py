@@ -21,7 +21,7 @@ def is_dark(random_hour, dark_theme_enabled_by_user):
     elif dark_theme_enabled_by_user is False:
         return False
     elif dark_theme_enabled_by_user is None:
-        if time(0) <= current_time < time(6) or current_time == (time(23)):
+        if time(0) <= current_time < time(6) or current_time > time(21):
             return True
         else:
             return False
